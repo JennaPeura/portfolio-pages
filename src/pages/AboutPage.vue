@@ -4,12 +4,17 @@
       <div class="col-12 col-md-8 text-center">
         <h2 class="text-h3 text-weight-bold text-gradient q-mb-md">About Me</h2>
         <p class="text-h6 text-grey-4 text-justify" style="line-height: 1.8">
-          As Co-founder & CTO of Escapica, I lead the technical vision and execution of a full-stack
-          web platform built from scratch. I manage the entire development process, from
-          architecture and frontend implementation to infrastructure, deployment, and team
-          leadership. I solve technical and operational challenges, ensuring the platform is
-          scalable, secure, and maintainable. My expertise includes Vue 3, Quasar, TypeScript, and
-          backend infrastructure using self-hosted Supabase, Docker, and Linux.
+          As Co-founder & CTO of <b>Escapica</b>, I lead the technical vision and execution of a
+          full-stack web platform built from scratch. I manage the entire development process, from
+          <b>architecture</b> and <b>frontend implementation</b> to <b>infrastructure</b>,
+          <b>deployment</b>, and <b>team leadership</b>.
+        </p>
+
+        <p class="text-h6 text-grey-4 text-justify" style="line-height: 1.8">
+          I tackle complex technical and operational challenges, ensuring the platform is
+          <b>scalable</b>, <b>secure</b>, and <b>maintainable</b>. My expertise includes
+          <b>Vue 3</b>, <b>Quasar</b>, <b>TypeScript</b>, and backend infrastructure with
+          <b>self-hosted Supabase</b>, <b>Docker</b>, and <b>Linux</b>.
         </p>
       </div>
     </div>
@@ -17,17 +22,24 @@
     <div class="row justify-center q-mb-xl">
       <div class="col-12 col-md-8">
         <h3 class="text-h4 text-weight-bold text-secondary q-mb-lg text-center">Skills</h3>
-        <div class="row justify-center q-gutter-md">
-          <q-chip
-            v-for="skill in skills"
-            :key="skill"
-            color="dark"
-            text-color="primary"
-            icon="check"
-            class="glass-chip q-px-md q-py-sm"
-          >
-            {{ skill }}
-          </q-chip>
+
+        <div v-for="(categorySkills, category) in skills" :key="category" class="q-mb-lg">
+          <div class="text-h6 text-grey-4 q-mb-sm text-center">{{ category }}</div>
+          <div class="row justify-center q-gutter-md">
+            <q-chip
+              v-for="skill in categorySkills"
+              :key="skill"
+              color="dark"
+              text-color="primary"
+              icon="check"
+              class="glass-chip q-px-md q-py-sm"
+            >
+              {{ skill }}
+              <q-tooltip class="text-subtitle bg-teal-8" anchor="bottom middle" self="top middle">
+                Proficient with {{ skill }}
+              </q-tooltip>
+            </q-chip>
+          </div>
         </div>
       </div>
     </div>
@@ -45,17 +57,12 @@ import { ref } from 'vue';
 import TimelineSection from 'components/TimelineSection.vue';
 import { type TimelineEvent } from 'components/models';
 
-const skills = [
-  'TypeScript',
-  'Vue 3',
-  'Quasar Framework',
-  'Supabase',
-  'Docker',
-  'Linux',
-  'DevOps',
-  'Node.js',
-  'Git',
-];
+const skills = {
+  Frontend: ['Vue 3', 'Quasar Framework', 'TypeScript', 'SCSS', 'HTML5', 'CSS3'],
+  Backend: ['Node.js', 'Supabase', 'PostgreSQL'],
+  DevOps: ['Docker', 'Linux', 'Git', 'GitHub Actions'],
+  Tools: ['VS Code', 'Figma', 'Postman'],
+};
 
 const timelineEvents = ref<TimelineEvent[]>([
   {

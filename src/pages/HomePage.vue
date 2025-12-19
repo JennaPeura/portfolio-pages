@@ -5,20 +5,22 @@
     <div class="blob blob-2"></div>
 
     <div class="hero-content text-center q-pa-md relative-position z-top">
-      <div class="text-overline text-secondary q-mb-sm tracking-widest">PORTFOLIO 2025</div>
-
       <h1 class="text-h1 text-weight-bold q-mb-md leading-tight">
-        Hello, I'm <span class="text-gradient">Jenna</span>
+        <span class="text-gradient">Jenna</span>
       </h1>
 
-      <h2 class="text-h3 text-weight-light text-grey-4 q-mb-xl">
-        Full-stack <span class="text-gradient-accent">Architect</span> & CTO
+      <h2 class="text-h3 text-weight-light text-grey-4 q-mb-sm">
+        Full-stack <span class="text-gradient-accent">Architect</span> &
+        <span class="text-gradient-variant text-weight-bold">CTO</span>
       </h2>
+      <h6 class="text-grey-5 q-mb-xl">
+        Developer Extraordinaire (and occasional problem annihilator)
+      </h6>
 
       <p class="text-h6 text-grey-5 q-mb-xl max-w-md q-mx-auto" style="line-height: 1.6">
-        Crafting digital experiences with <span class="text-white">Vue 3</span>,
-        <span class="text-white">Quasar</span>, and <span class="text-white">TypeScript</span>.
-        Turning complex problems into elegant solutions.
+        Solving complex problems with <span class="text-white">Vue 3</span>,
+        <span class="text-white">Quasar</span>, and <span class="text-white">TypeScript</span>, and
+        shipping solutions <span class="text-gradient-accent">that just work</span>.
       </p>
 
       <div class="row justify-center q-gutter-md">
@@ -35,7 +37,6 @@
         <q-btn
           to="/about"
           color="white"
-          text-color="dark"
           label="About Me"
           size="lg"
           outline
@@ -68,6 +69,7 @@
 
 .leading-tight {
   line-height: 1.1;
+  letter-spacing: 4px;
 }
 
 .max-w-md {

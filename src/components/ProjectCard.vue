@@ -2,7 +2,13 @@
   <q-card class="glass-card column full-height no-shadow overflow-hidden">
     <q-img v-if="project.image" :src="project.image" :ratio="16 / 9" class="project-image">
       <div class="absolute-full flex flex-center overlay-content">
-        <q-btn round color="white" text-color="dark" icon="arrow_forward" />
+        <q-btn
+          round
+          color="white"
+          text-color="dark"
+          icon="arrow_forward"
+          @click="redirectToProjectSite(project.link)"
+        />
       </div>
       <div class="absolute-top-right q-pa-sm">
         <q-badge
@@ -19,7 +25,13 @@
       class="project-image"
     >
       <div class="absolute-full flex flex-center overlay-content">
-        <q-btn round color="white" text-color="dark" icon="arrow_forward" @click="redirectToProjectSite(project.link)" />
+        <q-btn
+          round
+          color="white"
+          text-color="dark"
+          icon="arrow_forward"
+          @click="redirectToProjectSite(project.link)"
+        />
       </div>
       <div class="absolute-top-right q-pa-sm">
         <q-badge
@@ -56,7 +68,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { type Project } from './models';
+
+const router = useRouter();
 
 interface Props {
   project: Project;
@@ -67,19 +82,29 @@ defineProps<Props>();
 const getStatusColor = (status: string) => {
   switch (status) {
     case 'Launched':
-      return 'positive';
+      return 'green-6';
     case 'Open':
       return 'info';
     case 'Beta':
       return 'warning';
+      case 'In Development':
+      return 'orange';
+    case 'Prototype':
+      return 'grey-8';
+    case 'Completed':
+      return 'teal';
     default:
       return 'grey';
   }
-}
+};
 
-const redirectToProjectSite = (link: string | undefined) => {
+const redirectToProjectSite = async (link: string | undefined) => {
   if (link) {
-    window.open(link, '_blank');
+    if (link.startsWith('http')) {
+      window.open(link, '_blank');
+    } else {
+      await router.push(link);
+    }
   }
 };
 </script>
